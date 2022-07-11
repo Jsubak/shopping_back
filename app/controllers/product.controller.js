@@ -1,4 +1,4 @@
-const Product = require("../controllers");
+const Product = require("../models/product.model");
 
 // 상품 넣기
 exports.create = (req, res) => {
@@ -40,7 +40,7 @@ exports.findAll = (req, res) => {
 
 // 조건을 포함해서 검색
 exports.findOne = (req, res) => {
-    Product.findById = (req.params.id, (err, data) => {
+    Product.findById(req.params.id, (err, data) => {
         if(err) {
             if(err.kind === "not_found") {
                 res.status(404).send({

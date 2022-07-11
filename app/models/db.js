@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     database: dbConfig.DB
 });
 
-connection.connect(err => {
+connection.connect(error => {
     if(error) throw error;
     console.log("데이터베이스에 성공적으로 연결했음")
 });

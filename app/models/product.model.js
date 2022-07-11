@@ -27,6 +27,7 @@ Product.findById = (id, result) => {
         }
         if(res.length) {
             console.log("found product: ", res[0])
+            result(null, res[0])
             return
         }
         // id를 못찾을 때

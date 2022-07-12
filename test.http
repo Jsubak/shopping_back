@@ -1,0 +1,13 @@
+###
+POST http://localhost:8080/api/user
+Accept: application/json
+Accept-Encoding: gzip
+Content-Type: application/json
+Accept-version: 1.0.0
+
+{
+    "userid": "fghgf12",
+    "username": "diq",
+    "userpassword": "0000",
+    "useremail": "vbc1233@naver.com"
+}

@@ -20,6 +20,9 @@ app.use(
 
 const db = require("./app/models");
 db.sequelize.sync()
+// db.sequelize.sync({force: true}).then(() => {
+//     console.log('Drop and Resync Db');
+// });
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -30,7 +33,9 @@ app.get("/", (req, res) => {
 })
 
 require("./app/routes/product.routes")(app);
-require("./app/routes/user.routes")(app)
+require("./app/routes/user.routes")(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.sequelize.routes")(app);
 
 app.use('static', express.static(__dirname + '/images'));
 

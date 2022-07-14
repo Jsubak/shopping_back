@@ -1,17 +1,18 @@
 const db = require("../models");
 const User = db.user;
+const ROLES = db.ROLES;
 
 checkDuplicateUsernameOrEmail = async (req, res, next) => {
     try {
-      // Username
+      // Userid
       let user = await User.findOne({
         where: {
-          username: req.body.username
+          userid: req.body.userid
         }
       });
       if (user) {
         return res.status(400).send({
-          message: "중복된 이름입니다!"
+          message: "중복된 아이디입니다!"
         });
       }
       // Email
@@ -28,7 +29,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
       next();
     } catch (error) {
       return res.status(500).send({
-        message: "Unable to validate Username!"
+        message: "유효하지 않습니다"
       });
     }
 }

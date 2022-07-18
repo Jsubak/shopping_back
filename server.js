@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const cookieSession = require("cookie-session")
+// sequelize 연결
+const db = require("./app/models");
+// const Role = db.role
 const app = express();
 
 let corsOptions = {
@@ -13,14 +16,11 @@ app.use(cors(corsOptions));
 // session 파트
 app.use(
     cookieSession({
-        name: "session",
-        secret: "secret-key",
+        name: "test-session",
+        secret: "COOKIE_SECRET",
         httpOnly: true
     })
 )
-
-// sequelize 연결
-const db = require("./app/models");
 
 db.sequelize.sync()
 

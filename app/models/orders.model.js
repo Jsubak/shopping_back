@@ -3,6 +3,8 @@ const sql = require("./db.js")
 const Orders = function(orders) {
     this.userid = orders.userid
     this.productid = orders.productid
+    this.address = orders.address
+    this.phone = orders.phone
 }
 
 Orders.create = (newOrders, result) => {

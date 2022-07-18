@@ -10,7 +10,9 @@ exports.create = (req, res) => {
 
     const orders = new Orders ({
         userid: req.body.userid,
-        productid: req.body.productid
+        productid: req.body.productid,
+        address: req.body.address,
+        phone: req.body.phone
     })
 
     Orders.create(orders, (err, data) => {

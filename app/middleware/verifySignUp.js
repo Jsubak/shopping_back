@@ -34,8 +34,24 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
     }
 }
 
+checkRolesExisted = (req, res, next) => {
+  if (req.body.roles) {
+    for (let i = 0; i < req.body.roles.length; i++) {
+      if (!ROLES.includes(req.body.roles[i])) {
+        res.status(400).send({
+          message: "실패했습니다 = " + req.body.roles[i]
+        });
+        return;
+      }
+    }
+  }
+  
+  next();
+};
+
 const verifySignUp = {
-    checkDuplicateUsernameOrEmail
+    checkDuplicateUsernameOrEmail,
+    checkRolesExisted
 };
 module.exports = verifySignUp;
   

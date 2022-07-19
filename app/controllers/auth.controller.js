@@ -71,7 +71,6 @@ exports.signin = async (req, res) => {
       userid: user.userid,
       username: user.username,
       email: user.email,
-      roles: authorities,
       accessToken: token
     });
   } catch (error) {

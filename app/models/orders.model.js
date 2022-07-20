@@ -5,6 +5,8 @@ const Orders = function(orders) {
     this.productid = orders.productid
     this.address = orders.address
     this.phone = orders.phone
+    this.productcount = orders.productcount
+    this.productprice = orders.productprice
 }
 
 Orders.create = (newOrders, result) => {

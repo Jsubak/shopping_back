@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     const product = new Product({
         productname: req.body.productname,
         productdes: req.body.productdes,
-        productimg: req.body.productimg
+        productimg: req.body.productimg,
+        productprice: req.body.productprice
     });
 
     Product.create(product, (err, data) => {
@@ -80,6 +81,31 @@ exports.update = (req, res) => {
                 }
             } else res.send(data);
         }
+    )
+}
+
+exports.buy = (req, res) => {
+    if(!req.body) {
+        res.status(400).send({
+            message: "내용이 비어있습니다"
+        })
+    }
+    console.log(req.body)
+    Product.buy(
+        new Product(req.body),
+        (err, data) => {
+        if(err) {
+            if(err.kind === "not_found") {
+                res.status(404).send({
+                    message: "값을 찾을 수 없습니다."
+                })
+            } else {
+                res.status(500).send({
+                    message: "update 에러"
+                })
+            }
+        } else res.send(data);
+      }
     )
 }
 

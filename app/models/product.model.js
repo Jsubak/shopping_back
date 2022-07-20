@@ -1,9 +1,12 @@
 const sql = require("./db.js");
 
 const Product = function(product) {
+    this.productid = product.productid
     this.productname = product.productname;
     this.productdes = product.productdes;
     this.productimg = product.productimg;
+    this.productprice = product.productprice
+    this.productcount = product.productcount
 }
 
 Product.create = (newProduct, result) => {
@@ -69,6 +72,25 @@ Product.updateById = (id, product, result) => {
             result(null, {id: id, ...product})
         }
     )
+}
+
+Product.buy = (product, result) => {
+    sql.query(`UPDATE product p INNER JOIN orders o ON p.productid = o.productid SET p.productcount = p.productcount - ${product.productcount} WHERE p.productid = ${product.productid} AND p.productcount > 0`,
+    (err, res) => {
+        if(err) {
+            console.log("error: ", err)
+            result(null, err);
+            return
+        }
+        if(res.affectedRows == 0) {
+            result({kind: "not_found"}, null)
+            return
+        }
+
+        console.log("updated product: ", {product: product.productcount})
+        result(null, {product: product.productcount})
+    }
+  )
 }
 
 Product.remove = (id, result) => {

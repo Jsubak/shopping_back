@@ -43,7 +43,7 @@ exports.signin = async (req, res) => {
       },
     });
     if (!user) {
-      return res.status(404).send({ message: "이름을 찾을 수 없습니다" });
+      return res.status(404).send({ message: "아이디를 찾을 수 없습니다" });
     }
     const passwordIsValid = bcrypt.compareSync(
       req.body.password,

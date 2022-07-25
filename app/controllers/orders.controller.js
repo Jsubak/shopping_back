@@ -24,5 +24,17 @@ exports.create = (req, res) => {
                     err.message || "orders 테이블에 넣는데 에러났음"
             });
         else res.send(data);
+    })  
+}
+
+exports.findorder = (req, res) => {
+    const orderid = req.query.userid
+    Orders.findOne(orderid, (err, data) => {
+        if(err)
+            res.status(500).send({
+                message:
+                    err.message || "userid에 에러났음"
+            });
+        else res.send(data);
     })
 }

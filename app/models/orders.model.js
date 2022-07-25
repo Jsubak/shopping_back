@@ -21,4 +21,16 @@ Orders.create = (newOrders, result) => {
     })
 }
 
+Orders.findOne = (id, result) => {
+    sql.query(`SELECT * FROM orders WHERE userid = '${id}'`, (err, res) => {
+        if(err) {
+            console.log("error: ", err)
+            result(err, null)
+            return
+        }
+        console.log("mypage: ", res)
+        result(null, res)
+    });
+}
+
 module.exports = Orders

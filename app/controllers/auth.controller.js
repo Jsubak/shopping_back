@@ -55,7 +55,7 @@ exports.signin = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ id: user.id }, config.secret, {
+    const token = jwt.sign({ id: user.id, userid: user.userid }, config.secret, {
       expiresIn: 86400, // 24 hours
     });
 
@@ -88,3 +88,22 @@ exports.signout = async (req, res) => {
       this.next(err);
     }
 };
+
+// exports.me = async (req, res) => {
+//   try {
+//     const user = await User.findOne({
+//       attributes: ["type"],
+//       where: {
+//         id: req.userid,
+//       },
+//     });
+//     if (user) {
+//       return res.status(200).json({
+//         description: "회원정보 보기",
+//         content: user,
+//       });
+//     }
+//   } catch (err) {
+//     return res.status(500).send("Error -> " + err);
+//   }
+// };

@@ -1,4 +1,5 @@
 const sql = require("./db.js")
+const sqls = require("./index")
 
 const User = function(user) {
     this.userid = user.userid
@@ -35,5 +36,18 @@ User.find = (id, password, result) => {
         result({kind: "not_found"}, null);
     })
 }
+
+// User.findById = (id, result) => {
+//     console.log(id)
+//    sql.query(`SELECT * FROM users WHERE userid = ${id.userid}`, (err, res) => {
+//         if(err) {
+//             console.log("error: ", err)
+//             result(err, null)
+//             return
+//         }
+//         console.log("mypage: ", res)
+//         result(null, res)
+//    });
+// }
 
 module.exports = User;

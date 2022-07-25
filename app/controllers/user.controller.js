@@ -40,3 +40,16 @@ exports.find = (req, res) => {
         } else res.send(data)
     })
 }
+
+// exports.findusers = (req, res) => {
+//     const userid = req.query.userid
+//     console.log(userid)
+//     User.findById(userid, (err, data) => {
+//         if(err)
+//             res.status(500).send({
+//                 message:
+//                     err.message || "userid에 에러났음"
+//             });
+//         else res.send(data);
+//     })
+// }

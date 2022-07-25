@@ -84,6 +84,7 @@ exports.update = (req, res) => {
     )
 }
 
+// 상품 구매 시 상품 개수 업데이트
 exports.buy = (req, res) => {
     if(!req.body) {
         res.status(400).send({

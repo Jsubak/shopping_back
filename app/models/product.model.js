@@ -74,8 +74,9 @@ Product.updateById = (id, product, result) => {
     )
 }
 
+// 구매 후 수량 변경
 Product.buy = (product, result) => {
-    sql.query(`UPDATE product p INNER JOIN orders o ON p.productid = o.productid SET p.productcount = p.productcount - ${product.productcount} WHERE p.productid = ${product.productid} AND p.productcount > 0`,
+    sql.query(`UPDATE product SET productcount = productcount - ${product.productcount} WHERE productid = ${product.productid} AND productcount > 0`,
     (err, res) => {
         if(err) {
             console.log("error: ", err)

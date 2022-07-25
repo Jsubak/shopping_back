@@ -10,10 +10,9 @@ let corsOptions = {
     origin: 'http://localhost:8081'
 }
 
-
 app.use(cors(corsOptions));
 
-// session 파트
+// cookie 파트
 app.use(
     cookieSession({
         name: "test-session",
@@ -22,6 +21,7 @@ app.use(
     })
 )
 
+// sequelize 값 저장된 상태로 실행
 db.sequelize.sync()
 
 // sequelize 테이블 드랍하고 다시 만들기
@@ -43,6 +43,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.sequelize.routes")(app);
 require("./app/routes/orders.routes")(app);
+require("./app/routes/mypage.routes")(app);
 
 // 포트를 정하고 리슨에 요청
 const PORT = process.env.PORT || 8080;

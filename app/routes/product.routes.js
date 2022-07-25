@@ -14,6 +14,7 @@ module.exports = app => {
     // Product colunm 업데이트
     router.put("/:id", product.update);
 
+    // Product 상품 개수 업데이트
     router.put("/", product.buy);
 
     // Product colunm 삭제

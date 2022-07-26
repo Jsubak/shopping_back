@@ -37,17 +37,4 @@ User.find = (id, password, result) => {
     })
 }
 
-// User.findById = (id, result) => {
-//     console.log(id)
-//    sql.query(`SELECT * FROM users WHERE userid = ${id.userid}`, (err, res) => {
-//         if(err) {
-//             console.log("error: ", err)
-//             result(err, null)
-//             return
-//         }
-//         console.log("mypage: ", res)
-//         result(null, res)
-//    });
-// }
-
 module.exports = User;

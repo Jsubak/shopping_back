@@ -9,12 +9,13 @@ exports.create = (req, res) => {
         })
     }
 
-    const product = new Product({
+    const product = {
         productname: req.body.productname,
         productdes: req.body.productdes,
         productimg: req.body.productimg,
-        productprice: req.body.productprice
-    });
+        productprice: req.body.productprice,
+        productcount: req.body.productcount
+    };
 
     Product.create(product, (err, data) => {
         if (err)
@@ -65,10 +66,17 @@ exports.update = (req, res) => {
         })
     }
     console.log(req.body);
+    const product = {
+        productname: req.body.productname,
+        productdes: req.body.productdes,
+        productimg: req.body.productimg,
+        productprice: req.body.productprice,
+        productcount: req.body.productcount
+    }
+
     Product.updateById(
         req.params.id,
-        new Product(req.body),
-        (err, data) => {
+        product, (err, data) => {
             if (err) {
                 if(err.kind === "not_found"){
                     res.status(404).send({
@@ -91,10 +99,14 @@ exports.buy = (req, res) => {
             message: "내용이 비어있습니다"
         })
     }
-    console.log(req.body)
+
+    const product = {
+        productid : req.body.productid,
+        productcount: req.body.productcount
+    };
+
     Product.buy(
-        new Product(req.body),
-        (err, data) => {
+        product, (err, data) => {
         if(err) {
             if(err.kind === "not_found") {
                 res.status(404).send({

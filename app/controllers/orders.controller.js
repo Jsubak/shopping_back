@@ -8,14 +8,14 @@ exports.create = (req, res) => {
         })
     }
 
-    const orders = new Orders ({
+    const orders = {
         userid: req.body.userid,
         productid: req.body.productid,
         address: req.body.address,
         phone: req.body.phone,
         productcount: req.body.productcount,
         productprice: req.body.productprice
-    })
+    }
 
     Orders.create(orders, (err, data) => {
         if (err)

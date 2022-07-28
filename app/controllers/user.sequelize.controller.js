@@ -32,3 +32,22 @@ exports.findAll = (req, res) => {
       })
     })
 };
+
+exports.update = (req, res) => {
+    const id = req.query.userid;
+
+    User.update({
+        username : req.body.username,
+        email : req.body.email
+    }, {
+        where: { userid : id }
+    })
+    .then(data => {
+        res.send({message: "asdasds"})
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: `"에러" ${id}`
+        })
+    })
+}

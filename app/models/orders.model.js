@@ -22,7 +22,7 @@ let Orders = {
         })
     },
     findOne : (id, result) => {
-        sql.query(`SELECT * FROM orders WHERE userid = '${id}'`, (err, res) => {
+        sql.query(`SELECT * FROM product p INNER JOIN orders o ON o.productid = p.productid WHERE userid = '${id}'`, (err, res) => { // INNER JOIN product img productname 
             if(err) {
                 console.log("error: ", err)
                 result(err, null)

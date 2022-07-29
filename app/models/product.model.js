@@ -38,7 +38,7 @@ let Product = {
         })
     },
     getAll : (name, result) => {
-        let query = "SELECT * FROM product ";
+        let query = "SELECT productid, productname, productdes, FORMAT(productprice, 0) AS productprice, productcount, productimg FROM product ";
         if (name) {
             query += `WHERE productname LIKE '%${name}%'`
         }
